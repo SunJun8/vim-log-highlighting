@@ -4,7 +4,7 @@
 
 ## Overview
 
-Provides syntax highlighting for generic log files in VIM.
+Provides syntax highlighting for generic log files in Vim/Neovim.
 
 Some of the highlighted elements are:
 - Dates and times
@@ -14,6 +14,8 @@ Some of the highlighted elements are:
 - IP and MAC addresses
 - SysLog format columns
 - XML Tags
+
+**🎉 New: Lua implementation for Neovim with improved performance and extensibility!**
 
 
 
@@ -35,9 +37,44 @@ Add `Plugin 'mtdl9/vim-log-highlighting'` to your `~/.vimrc` and run `PluginInst
 
 Copy the contents of the `ftdetect` and `syntax` folders in their respective ~/.vim/\* counterparts.
 
+### Neovim (Lua Implementation)
+
+For Neovim users, the plugin now includes a native Lua implementation with improved performance:
+
+1. Using [lazy.nvim](https://github.com/folke/lazy.nvim):
+```lua
+{
+  'mtdl9/vim-log-highlighting',
+  config = function()
+    require('log_highlighting').setup()
+  end
+}
+```
+
+2. Using [packer.nvim](https://github.com/wbthomason/packer.nvim):
+```lua
+use {
+  'mtdl9/vim-log-highlighting',
+  config = function()
+    require('log_highlighting').setup()
+  end
+}
+```
+
+3. Manual setup in `init.lua`:
+```lua
+-- Add the plugin to runtime path
+vim.opt.runtimepath:append('/path/to/vim-log-highlighting')
+
+-- Initialize the plugin
+require('log_highlighting').setup()
+```
+
 
 
 ## Configuration
+
+### Vim (Vim script)
 
 Once installed, the syntax highlighting will be enabled by default for files ending with `.log` and `_log` suffixes.
 
@@ -54,6 +91,48 @@ Likewise you can disable highlighting for elements you don't need:
 ```viml
 " Remove highlighting for URLs
 au rc Syntax log syn clear logUrl
+```
+
+### Neovim (Lua)
+
+The Lua implementation provides a more flexible configuration system:
+
+```lua
+require('log_highlighting').setup({
+  -- 自定义高亮组
+  highlights = {
+    logLevelError = { link = 'ErrorMsg' },
+    logUrl = { link = 'Underlined' },
+    -- 你也可以直接设置高亮属性
+    logDate = { fg = '#00ff00', bold = true },
+  },
+
+  -- 启用/禁用特定模式
+  enable = {
+    operators = true,
+    constants = true,
+    datetime = true,
+    entities = true,
+    syslog = true,
+    xml = true,
+    levels = true,
+  },
+
+  -- 添加自定义模式
+  custom_patterns = {
+    my_custom_log = {
+      pattern = 'MY_LOG:',
+      highlight = 'Keyword',
+    },
+  },
+})
+```
+
+#### Manual Refresh
+
+If you need to manually refresh the highlighting:
+```lua
+require('log_highlighting').refresh()
 ```
 
 

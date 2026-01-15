@@ -1,0 +1,156 @@
+# 测试日志文件 - 用于验证所有高亮规则
+
+## 日期时间格式测试
+# ISO 8601 日期（带 T）
+2024-01-15T10:30:45.123+0800 This is an ISO timestamp
+2024-12-31T23:59:59.999Z End of year timestamp
+
+# 斜杠分隔日期
+15/01/2024 Log entry with slash date
+31/12/2024 Another slash date
+
+# 日期缩写格式
+15/Jan/2024 Log with month abbreviation
+31/Dec/2024 Year end
+
+# 8 位连续日期
+20240115 Continuous date format
+20241231 End of year
+
+# 时间格式（HH:MM:SS）
+10:30:45 Simple time
+10:30:45.123456 Time with microseconds
+10:30:45+0800 Time with timezone offset
+10:30:45Z Time with UTC
+23:59:59.999-0500 Time with milliseconds and negative timezone
+
+## 日志级别测试
+[EMERGENCY] System is down!
+[EMERG] Emergency condition
+[ALERT] Alert condition
+[CRITICAL] Critical error
+[CRIT] Critical failure
+[FATAL] Fatal error occurred
+[ERROR] Error in module X
+[ERR] Error occurred
+[FAILURE] Operation failed
+[SEVERE] Severe error
+[WARNING] Warning message
+[WARN] Warning issued
+[NOTICE] Notice message
+[INFO] Information message
+[DEBUG] Debug message
+[FINE] Fine debug info
+[TRACE] Trace message
+[FINER] Finer trace
+[FINEST] Finest trace level
+
+## 实体匹配测试
+# URL
+https://example.com/page
+http://api.example.com/v1/users
+ftp://files.example.com/downloads
+
+# 域名
+www.example.com
+api.example.org
+mail.example.net
+
+# UUID
+550e8400-e29b-41d4-a716-446655440000
+123e4567-e89b-12d3-a456-426614174000
+
+# IPv4 地址
+192.168.1.1
+10.0.0.1
+172.16.0.1
+8.8.8.8
+
+# IPv6 地址
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+fe80:0000:0000:0000:0202:b3ff:fe1e:8329
+
+# MAC 地址
+00:1A:2B:3C:4D:5E
+AA:BB:CC:DD:EE:FF
+
+# 文件路径（Unix）
+/usr/local/bin/script.sh
+/var/log/app.log
+/home/user/documents/file.txt
+
+# 文件路径（Windows）
+C:\Program Files\MyApp\config.ini
+D:\Users\John\Documents\file.txt
+
+## 常量测试
+# 整数
+Count: 42
+Items: 100
+Index: 0
+
+# 十六进制数
+Memory address: 0x7fff5fbff700
+Color: 0xFF00FF
+Value: 0xDEADBEEF
+
+# 浮点数
+Price: 19.99
+Percentage: 99.99
+Ratio: 3.14159
+
+# 布尔值
+isEnabled: true
+isDisabled: false
+hasPermission: TRUE
+isLoggedIn: FALSE
+
+# null 值
+result: null
+data: NULL
+value: Null
+
+# 字符串
+name: 'John Doe'
+message: "Hello, World!"
+path: '/usr/local/bin'
+
+## XML/HTML 测试
+<logEntry>
+  <timestamp>2024-01-15T10:30:45</timestamp>
+  <level level="INFO">Information</level>
+  <message><![CDATA[This is a message with <special> characters]]></message>
+  <!-- This is an XML comment -->
+  <metadata>
+    <author value="John Doe" />
+    <source value="Application" />
+  </metadata>
+</logEntry>
+
+## Syslog 格式测试
+Jan 15 10:30:45 hostname systemd[1]: Started System Manager
+Jan 15 10:30:46 server-name sshd[1234]: Accepted password for user from 192.168.1.100
+Jan 15 10:30:47 myserver nginx[5678]: 200 OK - /api/v1/users
+
+## 运算符和括号测试
+Operator test: a + b - c * d / e
+Comparison: x > y and y < z
+Brackets: (parentheses), [square], {curly}
+Empty line below
+
+
+Next entry after empty line
+
+## 混合测试（真实日志示例）
+2024-01-15T10:30:45.123+0800 [INFO] Starting application on host.example.com (PID: 12345)
+2024-01-15T10:30:46.456+0800 [DEBUG] Loading configuration from /etc/app/config.ini
+2024-01-15T10:30:47.789+0800 [INFO] Database connection established to db.example.com:5432
+2024-01-15T10:30:50.012+0800 [WARN] High memory usage: 85% (threshold: 80%)
+2024-01-15T10:31:00.345+0800 [ERROR] Failed to process request: timeout after 30s
+2024-01-15T10:31:01.678+0800 [ERROR] HTTP 500 Internal Server Error at https://api.example.com/v1/users
+2024-01-15T10:31:02.901+0800 [CRITICAL] Database connection lost: connection refused
+2024-01-15T10:31:05.234+0800 [INFO] Attempting to reconnect...
+2024-01-15T10:31:10.567+0800 [INFO] Connection restored, resuming operations
+
+## 性能测试（大文件模拟）
+<!-- 以下重复 100 次以测试大文件性能 -->
