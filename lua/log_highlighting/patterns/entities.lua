@@ -43,7 +43,7 @@ M.patterns = {
   -- 文件路径（Windows 风格）
   {
     name = 'logFilePath',
-    pattern = [=[[A-Za-z]:\\[^[:space:]]*]=], -- C:\path\to\file
+    pattern = [[\a\:\\\S\+]], -- C:\path\to\file
   },
 }
 

@@ -28,7 +28,7 @@ M.patterns = {
   -- 时间（HH:MM:SS）带可选毫秒和时区
   {
     name = 'logTime',
-    pattern = [=[\d\d:\d\d:\d\d\(\.\d\{2,6}\)\?\s?\([+-]\d\{2,4}\|Z\)\?\>]=], -- HH:MM:SS[.ms][TZ]
+    pattern = [=[\d\d:\d\d:\d\d\(\.\d\{2,6}\)\?[ ]\?\([+-]\d\{2,4}\|Z\)\?\>]=], -- HH:MM:SS[.ms][TZ]
   },
   -- 时区
   {

@@ -20,7 +20,7 @@ function M.get_all_patterns(config)
   local all_patterns = {}
 
   -- 只有在启用的情况下才添加模式
-  if enableoperators ~= false then
+  if enable.operators ~= false then
     for _, pattern in ipairs(operators.patterns) do
       table.insert(all_patterns, pattern)
     end
